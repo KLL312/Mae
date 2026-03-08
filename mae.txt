@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Dia das Mães</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+font-family:Arial;
+overflow:hidden;
+}
+
+/* envelope */
+
+.envelope{
+position:relative;
+width:350px;
+height:220px;
+background:#ff4d6d;
+cursor:pointer;
+border-radius:5px;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* tampa do envelope */
+
+.tampa{
+position:absolute;
+top:0;
+left:0;
+width:0;
+height:0;
+border-left:175px solid transparent;
+border-right:175px solid transparent;
+border-bottom:110px solid #ff6f91;
+transform-origin:top;
+transition:1s;
+}
+
+/* carta */
+
+.carta{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+padding:20px;
+box-sizing:border-box;
+transform:translateY(100%);
+transition:1s;
+text-align:center;
+border-radius:5px;
+overflow:auto;
+}
+
+h1{
+color:#ff4d6d;
+}
+
+p{
+font-size:17px;
+color:#444;
+line-height:1.6;
+}
+
+/* abrir animação */
+
+.envelope.abrir .tampa{
+transform:rotateX(180deg);
+}
+
+.envelope.abrir .carta{
+transform:translateY(-60px);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="abrirCarta()">
+
+<div class="tampa"></div>
+
+<div class="carta">
+
+<h1>💐 Feliz Dia das Mães 💐</h1>
+
+<p id="mensagem"></p>
+
+</div>
+
+</div>
+
+<script>
+
+let texto = `Diana Cris,
+
+Hoje é um dia especial para agradecer por tudo que você faz.
+
+Obrigado por todo amor, cuidado e carinho que você sempre me deu.
+Você é uma mãe incrível e merece toda felicidade do mundo.
+
+Que seu Dia das Mães seja cheio de alegria,
+amor e momentos lindos.
+
+❤️ Eu te amo muito ❤️`
+
+let i = 0
+
+function escrever(){
+
+if(i < texto.length){
+document.getElementById("mensagem").innerHTML += texto.charAt(i)
+i++
+setTimeout(escrever,40)
+}
+
+}
+
+function abrirCarta(){
+
+document.querySelector(".envelope").classList.add("abrir")
+
+setTimeout(escrever,800)
+
+}
+
+</script>
+
+</body>
+</html>
